@@ -27,11 +27,7 @@ def get_feedback(secret, guess):
     # Check each number in the secret against each number in the guess.
     for i in range(len(secret)):
         for j in range(len(guess)):
-            if (
-                not matched_secret[i]
-                and not matched_guess[j]
-                and secret[i] == guess[j]
-            ):
+            if not matched_secret[i] and not matched_guess[j] and secret[i] == guess[j]:
                 # The number from the secret exists in the guess but at a different position.
                 correct_number += 1
                 # Mark these numbers as matched.
@@ -58,6 +54,7 @@ def mastermind():
     secret_length = len(secret)
     print("*" * secret_length)
     print(f"Secret code is {secret_length} digit(s).")
+    print("-----------------------------------------------------")
 
     # Initialize counter to keep track of the number of guesses made by Player 2.
     num_guesses = 0
@@ -67,7 +64,8 @@ def mastermind():
     # While number of guesses is less than 10, continue prompting Player 2 for guesses until out of attempts.
     while num_guesses < MAX_GUESSES:
         # Prompts Player 2 to enter guess and provides current guess attempt count.
-        print(f"\nPlayer 2, enter guess ({num_guesses + 1}/{MAX_GUESSES}):")
+        print("")
+        print(f"Player 2, enter guess ({num_guesses + 1}/{MAX_GUESSES}):")
 
         # Assign variable (guess) to Player 2's guess as a list and stripped of whitespaces.
         guess = list(input().strip())
